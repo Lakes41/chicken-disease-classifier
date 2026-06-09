@@ -117,6 +117,3 @@ Thumbs.db
 # template file
 template.py
 
-# Notebook
-*.ipynb
-notebooks/

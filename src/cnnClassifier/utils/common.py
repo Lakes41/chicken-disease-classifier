@@ -155,3 +155,19 @@ def decode_image(encoded_string: str, output_path: Path) -> None:
     except Exception as e:
         logger.error(f"Error decoding base64 string to image: {e}")
         raise BoxValueError(f"Error decoding base64 string to image: {e}")
+
+@ensure_annotations
+def create_directory(path: Path) -> None:
+    """
+    Creates a directory if it does not exist.
+    Args:
+        path (Path): Path to the directory.
+    Returns:
+        None
+    """
+    try:
+        os.makedirs(path, exist_ok=True)
+        logger.info(f"Directory created at {path}")
+    except Exception as e:
+        logger.error(f"Error creating directory: {e}")
+        raise BoxValueError(f"Error creating directory: {e}")

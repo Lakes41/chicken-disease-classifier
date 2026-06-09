@@ -1,0 +1,7 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: ${artifacts_root}/data_ingestion
+  source_URL: https://www.kaggle.com/datasets/allandclive/chicken-disease-1
+  local_data_file: ${data_ingestion.root_dir}/chicken_disease_image_dataset.zip
+  unzip_dir: ${data_ingestion.root_dir}/

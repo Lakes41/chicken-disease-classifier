@@ -29,6 +29,7 @@ setup(
     description="A simple neural network for detecting chicken diseases",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    packages=find_packages(),
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),
     install_requires= get_requirements("requirements.txt")
 )

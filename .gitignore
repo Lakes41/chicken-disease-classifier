@@ -117,3 +117,5 @@ Thumbs.db
 # template file
 template.py
 
+# artifacts
+artifacts/

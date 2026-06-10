@@ -157,7 +157,7 @@ def decode_image(encoded_string: str, output_path: Path) -> None:
         raise BoxValueError(f"Error decoding base64 string to image: {e}")
 
 @ensure_annotations
-def create_directory(path: Path) -> None:
+def create_directory(path: Path):
     """
     Creates a directory if it does not exist.
     Args:

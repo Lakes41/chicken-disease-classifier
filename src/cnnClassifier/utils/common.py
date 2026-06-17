@@ -171,3 +171,34 @@ def create_directory(path: Path):
     except Exception as e:
         logger.error(f"Error creating directory: {e}")
         raise BoxValueError(f"Error creating directory: {e}")
+    
+@ensure_annotations
+def get_folder_size(path: Path) -> str:
+    """
+    Gets the size of a folder in a human-readable format.
+    Args:
+        path (Path): Path to the folder.
+    Returns:
+        str: Size of the folder in a human-readable format.
+    """
+    try:
+        total_size = 0
+        root = Path(path)
+        if not root.is_dir():
+            raise NotADirectoryError(str(path))
+        total_bytes = sum(
+        f.stat().st_size
+        for f in root.rglob("*")
+            if f.is_file() and not f.is_symlink()
+            )
+        size_in_kb = total_bytes / 1024
+        size_in_mb = size_in_kb / 1024
+        if size_in_mb >= 1:
+            return f"{size_in_mb:.2f} MB"
+        elif size_in_kb >= 1:
+            return f"{size_in_kb:.2f} KB"
+        else:
+            return f"{total_bytes} bytes"
+    except Exception as e:
+        logger.error(f"Error getting size of folder: {e}")
+        raise BoxValueError(f"Error getting size of folder: {e}")
